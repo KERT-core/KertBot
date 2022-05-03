@@ -21,7 +21,7 @@ async def on_ready():
     print(botID)
     print('=============')
 
-    await bot.change_presence(status=discord.Status.online, activity=discord.Game(f'/help 치면 사용법 설명'))
+    await bot.change_presence(status=discord.Status.online, activity=discord.Game('컬방에서 감시'))
 
 access_token = os.environ['BOT_TOKEN']
 bot.run(access_token)
