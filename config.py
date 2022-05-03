@@ -1,0 +1,3 @@
+botName = 'KertBot'
+botID = ''
+EXTENSIONS = []
