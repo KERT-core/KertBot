@@ -1,3 +1,3 @@
 botName = 'KertBot'
 botID = ''
-EXTENSIONS = []
+EXTENSIONS = ['cogs.isopen', 'cogs.fairy']
