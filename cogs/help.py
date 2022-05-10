@@ -1,7 +1,7 @@
 import discord
 import asyncio
 from discord.ext.commands import Cog
-from discord.commands import slash_command, OptionV
+from discord.commands import slash_command, Option
 
 class Help(Cog):
     def __init__(self, bot):

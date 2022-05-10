@@ -23,5 +23,4 @@ async def on_ready():
 
     await bot.change_presence(status=discord.Status.online, activity=discord.Game('컬방에서 감시'))
 
-access_token = os.environ['BOT_TOKEN']
-bot.run(access_token)
+bot.run(botToken)
