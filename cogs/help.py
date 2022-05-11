@@ -11,7 +11,7 @@ class Help(Cog):
 
     @slash_command()
     async def help(self, ctx):
-        """명령어들의 종류를 크게 구분해서 보여줄게요."""
+        """컬트봇의 사용 방법을 알려줍니다."""
         
         helpEmbed = discord.Embed(title='도움말', description='여기서 사용할 수 있는 명령어 모음입니다.', color=KertColor)
         helpEmbed.add_field(name='`/help`', value='컬트봇의 사용 방법을 알려줍니다.', inline=True)
@@ -21,7 +21,7 @@ class Help(Cog):
         helpEmbed.add_field(name='`/개발진`', value='컬트봇의 개발진들을 보여줍니다.', inline=True)
         helpEmbed.set_footer(text=KertVer)
         
-        ctx.respond(embed=helpEmbed)
+        await ctx.respond(embed=helpEmbed)
 
 def setup(bot):
     bot.add_cog(Help(bot))

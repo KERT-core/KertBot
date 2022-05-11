@@ -9,7 +9,6 @@ class Fairy(Cog):
     def __init__(self, bot):
         self.bot = bot
 
-
     @slash_command(name='지성이있나요')
     async def fairy(self, ctx):
         """컬방에 요정이 있는지 알려줍니다."""
