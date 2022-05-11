@@ -9,16 +9,16 @@ from discord.commands import slash_command, Option
 
 is_open = False
 
-class Isopen(Cog) :
+class Isopen(Cog):
     def __init__(self,bot):
         self.bot = bot
     
-    @slash_command(name ='열렸나요')
+    @slash_command(name='열렸나요')
     async def open(self,ctx):
-        """컬방 열렸나요?"""
-        if is_open :
+        """컬방이 열려있는지 알려줍니다."""
+        if is_open:
             await ctx.respond('열렸어요')
-        else :
+        else:
             await ctx.respond('닫혔어요')
 
 def setup(bot):
