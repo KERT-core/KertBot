@@ -15,7 +15,7 @@ class Isopen(Cog) :
     
     @slash_command(name ='열렸나요')
     async def open(self,ctx):
-        """컬방 열렸나요?"""
+        """컬방이 열려있는지 알려줍니다."""
         if is_open :
             await ctx.respond('열렸어요')
         else :
