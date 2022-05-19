@@ -20,9 +20,14 @@ class Credits(Cog):
 22 정경호
 22 조은정
        '''
+       
+        special_thanks = '''
+special thx to
+18 양태관, 21 이주형, 22 황지영
+       '''
         
         creditEmbed = discord.Embed(title='개발진', description='', color=KertColor)
-        creditEmbed.add_field(name=members, value='special thx to 22 황지영')
+        creditEmbed.add_field(name=members, value=special_thanks)
         creditEmbed.set_footer(text=KertVer)
         
         await ctx.respond(embed=creditEmbed)
