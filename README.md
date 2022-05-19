@@ -4,7 +4,7 @@
 
 컬방을 지켜주고 컬트 회원님들을 도와줄 여러가지 기능들을 담은 봇입니다.
 
-컬트봇을 초대하시려면 [여기](https://discord.com/oauth2/authorize?client_id=758959686472564746&permissions=0&scope=bot%20applications.commands)를 클릭해주세요.
+컬트봇을 초대하시려면 [여기](https://discord.com/oauth2/authorize?client_id=976727339239100466&permissions=0&scope=bot%20applications.commands)를 클릭해주세요.
 
 ## 명령어 목록
 > | 카테고리        | 설명                                                      |
@@ -25,4 +25,5 @@
 ### 기타
 
 - `/help`: 컬트봇의 사용 방법을 알려줍니다.
+- `/컬방`: 컬방에 대한 정보를 알려줍니다.
 - `/개발진`: 컬트봇의 개발진들을 보여줍니다.

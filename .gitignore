@@ -293,3 +293,5 @@ cython_debug/
 
 # Ignore code-workspaces
 *.code-workspace
+
+config.py
