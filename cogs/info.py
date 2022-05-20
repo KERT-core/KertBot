@@ -10,7 +10,7 @@ class Info(Cog):
         self.bot = bot
 
     @slash_command(name='컬방')
-    async def credits(self, ctx):
+    async def room(self, ctx):
         """컬방에 대한 정보를 알려줍니다."""
         
         kertEmbed = discord.Embed(title='컬방', description='', color=KertColor)
