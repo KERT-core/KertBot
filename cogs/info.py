@@ -20,9 +20,21 @@ class Info(Cog):
         
         await ctx.respond(embed=kertEmbed)
         
+    @slash_command(name='컬트봇')
+    async def kertbot(self, ctx):
+        """컬트봇에 대한 정보를 알려줍니다."""
+        
+        kertbotEmbed = discord.Embed(title='컬트봇', description='', color=KertColor)
+        kertbotEmbed.add_field(name='위치', value='컬방(중앙도서관 옆 정보화본부(110동) 110호)', inline=False)
+        kertbotEmbed.add_field(name='코드', value='https://github.com/KERT-core/KertBot', inline=False)
+        kertbotEmbed.add_field(name='관리자', value='22 이지성, 22 정경호, 22 조은정', inline=False)
+        kertbotEmbed.set_footer(text=KertVer)
+        
+        await ctx.respond(embed=kertbotEmbed)
+        
     @slash_command(name='개발진')
     async def credits(self, ctx):
-        """컬트봇의 개발진들을 보여줍니다."""
+        """컬트봇의 개발진들을 알려줍니다."""
         
         members = '''
 19 김다훈
