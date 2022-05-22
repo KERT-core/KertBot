@@ -5,6 +5,9 @@ from discord.commands import slash_command, Option
 
 from config import *
 
+import requests
+import json
+
 bot = discord.Bot()
 
 if __name__ == '__main__':
