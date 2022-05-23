@@ -3,7 +3,7 @@ import asyncio
 from discord.ext.commands import Cog
 from discord.commands import slash_command, Option
 
-import RPI.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time
 
 is_open = False
@@ -49,6 +49,8 @@ class Open(Cog):
         
         PWM.stop()
         GPIO.cleanup()
+        
+        await ctx.respond('컬방에 알림음을 울렸습니다.')
 
 def setup(bot):
     bot.add_cog(Open(bot))
