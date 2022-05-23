@@ -4,7 +4,7 @@ from discord.ext.commands import Cog
 from discord.commands import slash_command
 
 import requests
-import json, base64
+import json
 
 fairyDevice = ['2A:BC:84:94:87:9C', '1C:C1:0C:E2:54:78', '3E:57:55:B5:7A:8A', 'EE:A6:85:AE:31:2C', '56:98:A2:57:F4:C3']
 
