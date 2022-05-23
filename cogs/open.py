@@ -6,8 +6,6 @@ from discord.commands import slash_command, Option
 import RPi.GPIO as GPIO
 import time
 
-is_open = False
-
 class Open(Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -16,10 +14,10 @@ class Open(Cog):
     async def isopen(self, ctx):
         """컬방이 열려있는지 알려줍니다."""
         
+        GPIO.setmode(GPIO.BOARD)
         circuit = 7
         cnt = 0
         
-        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(circuit, GPIO.OUT)
         GPIO.output(circuit, GPIO.LOW)
         
@@ -38,8 +36,8 @@ class Open(Cog):
     async def openplz(self, ctx):
         """컬방 안의 사람들이 문을 열어주도록 합니다."""
         
-        buzzer = 13
-        GPIO.setmode(GPIO.BCM)
+        buzzer = 33
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(buzzer, GPIO.OUT)
         GPIO.setwarnings(False)
         
