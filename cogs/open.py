@@ -1,7 +1,3 @@
-# 조은정, 정경호
-# 컬방 열렸나요?
-# 컬방 열어주세요!
-
 import discord
 import asyncio
 from discord.ext.commands import Cog
@@ -20,7 +16,20 @@ class Open(Cog):
     async def isopen(self, ctx):
         """컬방이 열려있는지 알려줍니다."""
         
-        if is_open:
+        circuit = 7
+        cnt = 0
+        
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setup(circuit, GPIO.OUT)
+        GPIO.output(circuit, GPIO.LOW)
+        
+        time.sleep(0.1)
+        GPIO.setup(circuit, GPIO.IN)
+        
+        while GPIO.input(circuit) == GPIO.LOW and cnt < 11000:
+            cnt += 1
+        
+        if cnt < 10000:
             await ctx.respond('열렸어요')
         else:
             await ctx.respond('닫혔어요')
