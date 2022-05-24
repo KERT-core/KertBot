@@ -5,10 +5,13 @@ from discord.commands import slash_command, Option
 
 import RPi.GPIO as GPIO
 import time
+import pygame
 
 class Open(Cog):
     def __init__(self, bot):
         self.bot = bot
+        pygame.mixer.init()
+        pygame.mixer.music.load('bell.mp3')
     
     @slash_command(name='열렸나요')
     async def isopen(self, ctx):
@@ -36,20 +39,9 @@ class Open(Cog):
     async def openplz(self, ctx):
         """컬방 안의 사람들이 문을 열어주도록 합니다."""
         
-        await ctx.respond('컬방에 알림음을 울립니다.')
+        pygame.mixer.music.play()
+        await ctx.respond('컬방에 알림음을 울렸습니다.')
 
-        buzzer = 33
-        
-        GPIO.setmode(GPIO.BOARD)
-        GPIO.setup(buzzer, GPIO.OUT)
-        GPIO.setwarnings(False)
-        
-        PWM = GPIO.PWM(buzzer, 262)
-        PWM.start(50.0)
-        time.sleep(3)
-        
-        PWM.stop()
-        GPIO.cleanup()
         
 def setup(bot):
     bot.add_cog(Open(bot))
