@@ -37,4 +37,4 @@ def animal():
     return jsonify(res)
 
 if __name__ == "__main__":
-    application.run(host='191.168.50.74', port=5000, threaded=True)
+    application.run(host='191.168.50.74', port=8520, threaded=True)
