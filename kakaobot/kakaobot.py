@@ -18,15 +18,11 @@ def animal():
     ls = "열어주세요"
     
     #입력받은걸 문자열로
-    speaker = req["action"]["detailParams"]["IsOpen"]["origin"]
-    if speaker == "열어주세요":
-        answer = "열었습니다"
+    light = 100
+    if light>=200:
+        answer = isOpen
     else:
-        light = 100
-        if light>=200:
-            answer = isOpen
-        else:
-            answer = isClose
+        answer = isClose
     # 답변 텍스트 설정
     res = {
         "version": "2.0",
