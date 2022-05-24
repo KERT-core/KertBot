@@ -11,7 +11,7 @@ class Open(Cog):
     def __init__(self, bot):
         self.bot = bot
         pygame.mixer.init()
-        pygame.mixer.music.load('alarm.wav')
+        pygame.mixer.music.load('alarm.mp3')
     
     @slash_command(name='열렸나요')
     async def isopen(self, ctx):
