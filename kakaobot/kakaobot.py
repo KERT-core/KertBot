@@ -4,7 +4,7 @@ import time
 
 application = Flask(__name__)
 
-def isopen(self):
+def isopen():
     """컬방이 열려있는지 알려줍니다."""
         
     circuit = 7
