@@ -14,10 +14,10 @@ class Open(Cog):
     async def isopen(self, ctx):
         """컬방이 열려있는지 알려줍니다."""
         
-        GPIO.setmode(GPIO.BOARD)
         circuit = 7
         cnt = 0
         
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(circuit, GPIO.OUT)
         GPIO.output(circuit, GPIO.LOW)
         
@@ -28,15 +28,18 @@ class Open(Cog):
             cnt += 1
         
         if cnt < 10000:
-            await ctx.respond('열렸어요')
+            await ctx.respond('열렸습니다!')
         else:
-            await ctx.respond('닫혔어요')
+            await ctx.respond('닫혔어요ㅠㅠ')
             
     @slash_command(name='열어주세요')
     async def openplz(self, ctx):
         """컬방 안의 사람들이 문을 열어주도록 합니다."""
         
+        await ctx.respond('컬방에 알림음을 울립니다.')
+
         buzzer = 33
+        
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(buzzer, GPIO.OUT)
         GPIO.setwarnings(False)
@@ -48,7 +51,5 @@ class Open(Cog):
         PWM.stop()
         GPIO.cleanup()
         
-        await ctx.respond('컬방에 알림음을 울렸습니다.')
-
 def setup(bot):
     bot.add_cog(Open(bot))

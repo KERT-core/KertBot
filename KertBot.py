@@ -5,6 +5,8 @@ from discord.commands import slash_command, Option
 
 from config import *
 
+import RPi.GPIO as GPIO
+import time
 import requests
 import json
 
@@ -22,7 +24,7 @@ async def on_ready():
     print('Build succeeded')
     print(botName)
     print(botID)
-    print('=============')
+    print('==========================')
 
     await bot.change_presence(status=discord.Status.online, activity=discord.Game('컬방에서 감시'))
 

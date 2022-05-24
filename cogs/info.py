@@ -37,8 +37,6 @@ class Info(Cog):
         """컬트봇의 개발진들을 알려줍니다."""
         
         members = '''
-19 김다훈
-21 김기홍
 22 이지성
 22 정경호
 22 조은정
@@ -46,7 +44,7 @@ class Info(Cog):
        
         special_thanks = '''
 special thx to
-18 양태관, 21 이주형, 22 황지영
+21 김기홍, 21 이주형
        '''
         
         creditEmbed = discord.Embed(title='개발진', description='', color=KertColor)
