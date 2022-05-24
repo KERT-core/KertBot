@@ -2,11 +2,11 @@ from flask import Flask, request, jsonify
 
 application = Flask(__name__)
 
-@application.route("/animal")
+@application.route("/")
 def hello():
     return "Hello goorm!"
 
-@application.route("/animal",methods=['POST'])
+@application.route("/",methods=['POST'])
 def animal():
     req = request.get_json()
     #조도 값이 200 이상이면 
@@ -37,4 +37,4 @@ def animal():
     return jsonify(res)
 
 if __name__ == "__main__":
-    application.run(host='191.168.50.74', port=8520, threaded=True)
+    application.run(host='192.168.50.74', port=8520, threaded=True)
