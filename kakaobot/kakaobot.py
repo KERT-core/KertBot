@@ -14,10 +14,6 @@ def animal():
     #조도 값이 200 이하면
     isClose = "닫혔습니다"
     
-    speakerON = "스피커 ON!"
-    ls = "열어주세요"
-    
-    #입력받은걸 문자열로
     light = 100
     if light>=200:
         answer = isOpen
@@ -41,4 +37,4 @@ def animal():
     return jsonify(res)
 
 if __name__ == "__main__":
-    application.run(host='0.0.0.0', port=5000, threaded=True)
+    application.run(host='191.168.50.74', port=5000, threaded=True)
