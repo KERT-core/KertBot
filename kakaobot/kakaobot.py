@@ -43,6 +43,8 @@ def openplz():
         cnt += 1
             
     if cnt < 10000:
+        pygame.mixer.init()
+        pygame.mixer.music.load("../alarm.mp3")
         pygame.mixer.music.play()
         return True
     else:
@@ -55,14 +57,14 @@ def hello():
 @application.route("/animal",methods=['POST'])
 def animal():
     req = request.get_json()
-    usersaid = req["action"]["detailParams"]["IsOpen"]["origin"]
-
-    if usersaid == "열렸나요":
+    usersaid = list(req["action"]["detailParams"].keys())
+    usersaid = usersaid[0]
+    if usersaid == "IsOpen":
         if isopen():
             answer = "열렸습니다"
         else:
             answer = "닫혔습니다"
-    elif usersaid == "열어주세요":
+    elif usersaid == "Openplz":
         if openplz():
             answer = "컬방에 알림음을 울렸습니다."
         else:
