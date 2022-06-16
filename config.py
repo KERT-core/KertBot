@@ -1,6 +1,8 @@
+import base64
+
 botName = 'KertBot'
 botID = 976727339239100466
-botToken = open('token', 'r').readline()
+botToken = base64.b64decode(open('token', 'r').readline()).decode('ascii')
 EXTENSIONS = ['cogs.help', 'cogs.open', 'cogs.fairy', 'cogs.info']
 
 KertColor = 0x000000
