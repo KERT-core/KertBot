@@ -68,6 +68,11 @@ class Fairy(Cog):
             await ctx.respond('있습니다!')
         else:
             await ctx.respond('없어요ㅠㅠ')
+            
+    @slash_command(name='요정랭킹')
+    async def fairyRank(self, ctx):
+        """`/지성이있나요` 명령어를 얼마나 사용했는지 알려줍니다."""
+        pass
 
 def setup(bot):
     bot.add_cog(Fairy(bot))
