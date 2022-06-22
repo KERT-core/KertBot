@@ -5,6 +5,7 @@ from discord.commands import slash_command
 
 import requests
 import json
+import datetime as dt
 
 fairyDevice = ['2A:BC:84:94:87:9C', '1C:C1:0C:E2:54:78', '3E:57:55:B5:7A:8A', 'EE:A6:85:AE:31:2C', '56:98:A2:57:F4:C3']
 
@@ -27,6 +28,9 @@ class Fairy(Cog):
         # 핸드폰:   EE:A6:85:AE:31:2C
         # 노트북:   1C:C1:0C:E2:54:78
         # 아이패드: 56:98:A2:57:F4:C3
+        
+        with open(f'fairy_archive/{dt.datetime.now().strftime("%Y.%m")}.txt', 'a') as archive:
+            archive.write(dt.datetime.now().strftime(f'%Y-%m-%dT%H:%M:%S {ctx.author.name} {ctx.author.id}\n'))
         
         with requests.Session() as session:
             login_url = "http://router.asus.com/login.cgi"

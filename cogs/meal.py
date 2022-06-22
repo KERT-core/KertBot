@@ -13,4 +13,4 @@ class Meal(Cog):
     
 
 def setup(bot):
-    bot.add_cog(Fairy(bot))
+    bot.add_cog(Meal(bot))
