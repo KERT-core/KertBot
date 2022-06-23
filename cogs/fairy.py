@@ -87,6 +87,14 @@ class Fairy(Cog):
                 log = tuple(map(int, archive.readline().split()[2:]))
                 if not log: break
                 
+                if log[0] not in fairyCounter:
+                    fairyCounter[log[0]] = [1, 0]
+                else:
+                    fairyCounter[log[0]][0] += 1
+                    
+                fairyCounter[log[0]][1] += log[1]
+                
+                print(fairyCounter)
                 
         rankEmbed = discord.Embed(title='요정 랭킹', color=KertColor)
 
