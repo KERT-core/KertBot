@@ -93,9 +93,18 @@ class Fairy(Cog):
                     fairyCounter[log[0]][0] += 1
                     
                 fairyCounter[log[0]][1] += log[1]
+
+            commandRank = sorted(fairyCounter.keys(), key=lambda x: fairyCounter.get(x)[0], reverse=True)
+            succeedRank = sorted(fairyCounter.keys(), key=lambda x: fairyCounter.get(x)[1], reverse=True)
+            
+            commandTop3 = map(lambda x: ctx.guild.get_member(id), commandRank[:3])
+            succeedTop3 = map(lambda x: ctx.guild.get_member(id), succeedRank[:3])
                 
-                print(fairyCounter)
-                
+            # await ctx.guild.fetch_member(id)
+            print(list(commandTop3))
+            print(list(succeedTop3))
+            
+            print(self.bot.get_user(976727339239100466))
         rankEmbed = discord.Embed(title='요정 랭킹', color=KertColor)
 
 def setup(bot):
