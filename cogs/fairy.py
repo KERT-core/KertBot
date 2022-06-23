@@ -3,6 +3,8 @@ import asyncio
 from discord.ext.commands import Cog
 from discord.commands import slash_command
 
+from config import KertColor, KertVer
+
 import requests
 import json
 import datetime as dt
@@ -28,9 +30,6 @@ class Fairy(Cog):
         # 핸드폰:   EE:A6:85:AE:31:2C
         # 노트북:   1C:C1:0C:E2:54:78
         # 아이패드: 56:98:A2:57:F4:C3
-        
-        with open(f'fairy_archive/{dt.datetime.now().strftime("%Y.%m")}.txt', 'a') as archive:
-            archive.write(dt.datetime.now().strftime(f'%Y-%m-%dT%H:%M:%S {ctx.author.name} {ctx.author.id}\n'))
         
         with requests.Session() as session:
             login_url = "http://router.asus.com/login.cgi"
@@ -72,11 +71,24 @@ class Fairy(Cog):
             await ctx.respond('있습니다!')
         else:
             await ctx.respond('없어요ㅠㅠ')
+
+        with open(f'fairy_archive/{dt.datetime.now().strftime("%Y.%m")}.txt', 'a') as archive:
+            archive.write(dt.datetime.now().strftime(f'%Y-%m-%dT%H:%M:%S {ctx.author.name} {ctx.author.id} {1 if is_fairy else 0}\n'))
             
     @slash_command(name='요정랭킹')
     async def fairyRank(self, ctx):
         """`/지성이있나요` 명령어를 얼마나 사용했는지 알려줍니다."""
-        pass
+        rankRespond = await ctx.respond(embed=discord.Embed(title='요정 랭킹', description='집계 중...', color=KertColor))
+        
+        with open(f'fairy_archive/{dt.datetime.now().strftime("%Y.%m")}.txt', 'r') as archive:
+            fairyCounter = dict()
+            
+            while True:
+                log = tuple(map(int, archive.readline().split()[2:]))
+                if not log: break
+                
+                
+        rankEmbed = discord.Embed(title='요정 랭킹', color=KertColor)
 
 def setup(bot):
     bot.add_cog(Fairy(bot))
