@@ -79,8 +79,6 @@ class Fairy(Cog):
     async def fairyRank(self, ctx):
         """`/지성이있나요` 명령어를 얼마나 사용했는지 알려줍니다."""
         
-        await ctx.respond(embed=discord.Embed(title='요정 랭킹', description='집계 중...', color=KertColor))
-        
         with open(f'fairy_archive/{dt.datetime.now().strftime("%Y.%m")}.txt', 'r') as archive:
             fairyCounter = dict()
             
@@ -123,7 +121,7 @@ class Fairy(Cog):
         rankEmbed.add_field(name=mySucceedRankMsg, value=succeedRank, inline=True)
         rankEmbed.set_footer(text=KertVer)
         
-        await ctx.edit(embed=rankEmbed)
+        await ctx.respond(embed=rankEmbed)
 
 def setup(bot):
     bot.add_cog(Fairy(bot))
