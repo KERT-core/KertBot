@@ -3,8 +3,11 @@ import asyncio
 from discord.ext.commands import Cog
 from discord.commands import slash_command
 
+from config import KertColor, KertVer
+
 import requests
 import json
+import datetime as dt
 
 fairyDevice = ['2A:BC:84:94:87:9C', '1C:C1:0C:E2:54:78', '3E:57:55:B5:7A:8A', 'EE:A6:85:AE:31:2C', '56:98:A2:57:F4:C3']
 
@@ -68,6 +71,59 @@ class Fairy(Cog):
             await ctx.respond('있습니다!')
         else:
             await ctx.respond('없어요ㅠㅠ')
+
+        with open(f'fairy_archive/{dt.datetime.now().strftime("%Y.%m")}.txt', 'a') as archive:
+            archive.write(dt.datetime.now().strftime(f'%Y-%m-%dT%H:%M:%S {ctx.author.name} {ctx.author.id} {1 if is_fairy else 0}\n'))
+            
+    @slash_command(name='요정랭킹')
+    async def fairyRank(self, ctx):
+        """`/지성이있나요` 명령어를 얼마나 사용했는지 알려줍니다."""
+        
+        await ctx.respond(embed=discord.Embed(title='요정 랭킹', description='집계 중...', color=KertColor))
+        
+        with open(f'fairy_archive/{dt.datetime.now().strftime("%Y.%m")}.txt', 'r') as archive:
+            fairyCounter = dict()
+            
+            while True:
+                log = tuple(map(int, archive.readline().split()[2:]))
+                if not log: break
+                
+                if log[0] not in fairyCounter:
+                    fairyCounter[log[0]] = [1, 0]
+                else:
+                    fairyCounter[log[0]][0] += 1
+                    
+                fairyCounter[log[0]][1] += log[1]
+
+        commandRankList = sorted(fairyCounter.items(), key=lambda x: x[1][0], reverse=True)
+        succeedRankList = sorted(fairyCounter.items(), key=lambda x: x[1][1], reverse=True)
+        
+        
+        if ctx.author.id not in fairyCounter:
+            myCommandRankMsg = f'시도 순위\n{ctx.author.name}님은 명령어를 사용하시지 않았습니다'
+            mySucceedRankMsg = f'성공 순위\n{ctx.author.name}님은 명령어를 사용하시지 않았습니다'
+        else:
+            myCommandRank = commandRankList.index((ctx.author.id, fairyCounter[ctx.author.id]))
+            mySucceedRank = succeedRankList.index((ctx.author.id, fairyCounter[ctx.author.id]))
+            
+            myCommandRankMsg = f'시도 순위\n{ctx.author.name}님은 {myCommandRank+1}위({commandRankList[myCommandRank][1][0]}회) 입니다.'
+            mySucceedRankMsg = f'성공 순위\n{ctx.author.name}님은 {mySucceedRank+1}위({succeedRankList[mySucceedRank][1][1]}회) 입니다.'
+
+
+        commandRank = ''
+        succeedRank = ''
+        
+        for rank in range(3 if len(fairyCounter) >= 3 else len(fairyCounter)):
+            commandRank += f'{rank+1}위. {await self.bot.fetch_user(commandRankList[rank][0])}({commandRankList[rank][1][0]}회)\n'
+            succeedRank += f'{rank+1}위. {await self.bot.fetch_user(succeedRankList[rank][0])}({succeedRankList[rank][1][1]}회)\n'
+
+
+        rankEmbed = discord.Embed(title='요정 랭킹', color=KertColor)
+        rankEmbed.add_field(name=myCommandRankMsg, value=commandRank, inline=True)
+        rankEmbed.add_field(name=mySucceedRankMsg, value=succeedRank, inline=True)
+        rankEmbed.set_footer(text=KertVer)
+        
+        await ctx.edit(embed=rankEmbed)
 
 def setup(bot):
     bot.add_cog(Fairy(bot))
