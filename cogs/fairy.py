@@ -73,7 +73,7 @@ class Fairy(Cog):
             await ctx.respond('없어요ㅠㅠ')
 
         with open(f'fairy_archive/{dt.datetime.now().strftime("%Y.%m")}.txt', 'a') as archive:
-            archive.write(dt.datetime.now().strftime(f'%Y-%m-%dT%H:%M:%S {ctx.author.name} {ctx.author.id} {1 if is_fairy else 0}\n'))
+            archive.write(dt.datetime.now().strftime(f'%Y-%m-%dT%H:%M:%S <{ctx.author.name}> <{ctx.guild}> {ctx.author.id} {1 if is_fairy else 0}\n'))
             
     @slash_command(name='요정랭킹')
     async def fairyRank(self, ctx):
@@ -83,7 +83,7 @@ class Fairy(Cog):
             fairyCounter = dict()
             
             while True:
-                log = tuple(map(int, archive.readline().split()[2:]))
+                log = tuple(map(int, archive.readline().split()[-2:]))
                 if not log: break
                 
                 if log[0] not in fairyCounter:
