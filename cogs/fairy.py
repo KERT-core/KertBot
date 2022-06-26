@@ -72,14 +72,21 @@ class Fairy(Cog):
         else:
             await ctx.respond('없어요ㅠㅠ')
 
-        with open(f'fairy_archive/{dt.datetime.now().strftime("%Y.%m")}.txt', 'a') as archive:
+        with open(f'fairy_archive/{dt.datetime.now().strftime("%Y.%m")}.txt', 'a', encoding='euc-kr') as archive:
             archive.write(dt.datetime.now().strftime(f'%Y-%m-%dT%H:%M:%S <{ctx.author.name}> <{ctx.guild}> {ctx.author.id} {1 if is_fairy else 0}\n'))
+            
+    @slash_command(name='요정소환')
+    async def summonFairy(self, ctx):
+        """지성이를 소환시킵니다."""
+        
+        fairy = await self.bot.fetch_user(439817891240607746)
+        await ctx.respond(fairy.mention + ' 소환!')
             
     @slash_command(name='요정랭킹')
     async def fairyRank(self, ctx):
         """`/지성이있나요` 명령어를 얼마나 사용했는지 알려줍니다."""
         
-        with open(f'fairy_archive/{dt.datetime.now().strftime("%Y.%m")}.txt', 'r') as archive:
+        with open(f'fairy_archive/{dt.datetime.now().strftime("%Y.%m")}.txt', 'r', encoding='euc-kr') as archive:
             fairyCounter = dict()
             
             while True:

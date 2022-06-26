@@ -3,6 +3,8 @@ import asyncio
 from discord.ext.commands import Cog
 from discord.commands import slash_command
 
+from config import KertColor, KertVer
+
 class Meal(Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -11,7 +13,7 @@ class Meal(Cog):
     async def recommend_lunch(self, ctx):
         """점심 메뉴를 추천해줍니다."""
         
-        await ctx.respond(discord.Embed(title='점메추', description='요정이 열심히 개발 중...'))
+        await ctx.respond(discord.Embed(title='점메추', description='요정이 열심히 개발 중...', color=KertColor))
         
     
 

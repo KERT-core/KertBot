@@ -18,6 +18,7 @@ class Help(Cog):
         helpEmbed.add_field(name='`/열렸나요`', value='컬방이 열려있는지 알려줍니다.', inline=True)
         helpEmbed.add_field(name='`/열어주세요`', value='컬방 안의 사람들이 문을 열어주도록 합니다.', inline=True)
         helpEmbed.add_field(name='`/지성이있나요`', value='컬방에 요정이 있는지 알려줍니다.', inline=True)
+        helpEmbed.add_field(name='`/요정소환`', value='지성이를 소환시킵니다.', inline=True)
         helpEmbed.add_field(name='`/요정랭킹`', value='`/지성이있나요` 명령어를 얼마나 사용했는지 알려줍니다.', inline=True)
         helpEmbed.add_field(name='`/점메추`', value='`점심 메뉴를 추천해줍니다.', inline=True)
         helpEmbed.add_field(name='`/컬방`', value='컬방에 대한 정보를 알려줍니다.', inline=True)
